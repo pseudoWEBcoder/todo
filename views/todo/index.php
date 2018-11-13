@@ -30,9 +30,9 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title,  'url'=>['/todo/index']
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            ['attribute'=>'id',  'label'=>'#',  'width'=>'30px'],
 
-            'id',
+          //  'id',
             ['label'=>'день недели',  'value'=> /**
              * @param $model \app\models\Todo
              * @param $key
@@ -41,7 +41,8 @@ $this->params['breadcrumbs'][] = ['label'=>$this->title,  'url'=>['/todo/index']
                 function($model, $key){return \yii\helpers\ArrayHelper::getValue($model->namesDays,   $day = $model->getDateTime('D'),  $day); },  'group' => true,  /* enable grouping*/ ],
             'timestamp:datetime',
             'text',
-            'project.name',
+            ['label'=>'проект','value'=>  'project.name',  'group' => true],
+            ['label'=>'статус','value'=>  'status.name',  'group' => true],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
